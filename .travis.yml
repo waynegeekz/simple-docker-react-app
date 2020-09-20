@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services: 
+    - docker
+
+before_install:
+    - docker build -t waynegeekz/simple-docker-react-app -f Dockerfile.dev .
+    
+script:
+    - docker run -e CI=true waynegeekz/simple-docker-react-app npm run test
